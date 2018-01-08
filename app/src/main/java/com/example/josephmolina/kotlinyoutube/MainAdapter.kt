@@ -9,10 +9,10 @@ import kotlinx.android.synthetic.main.video_row.view.*
 /**
  * Created by josephmolina on 1/7/18.
  */
-class MainAdapter : RecyclerView.Adapter<CustomViewHolder>() {
+class MainAdapter(val homeFeed: HomeFeed) : RecyclerView.Adapter<CustomViewHolder>() {
 
     override fun getItemCount(): Int {
-        return 3
+        return homeFeed.videos.count()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): CustomViewHolder {
@@ -23,7 +23,8 @@ class MainAdapter : RecyclerView.Adapter<CustomViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder?, position: Int) {
-        holder?.view?.textView_video_title?.text = "123"
+        val video = homeFeed.videos.get(position)
+        holder?.view?.textView_video_title?.text = video.name
     }
 }
 
