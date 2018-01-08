@@ -1,5 +1,6 @@
 package com.example.josephmolina.kotlinyoutube
 
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +27,7 @@ class MainAdapter(val homeFeed: HomeFeed) : RecyclerView.Adapter<CustomViewHolde
     override fun onBindViewHolder(holder: CustomViewHolder?, position: Int) {
         val video = homeFeed.videos.get(position)
         holder?.view?.textView_video_title?.text = video.name
-        holder?.view?.textView_channel_name?.text = video.channel.name + "  *  " + "20K Views\n4days ago"
+        holder?.view?.textView_channel_name?.text = video.channel.name
 
         val thumbnailImageView = holder?.view?.thumbnailImageView
         Picasso.with(holder?.view?.context).load(video.imageUrl).into(thumbnailImageView)
@@ -38,5 +39,11 @@ class MainAdapter(val homeFeed: HomeFeed) : RecyclerView.Adapter<CustomViewHolde
 }
 
 class CustomViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-
+    init {
+        view.setOnClickListener {
+            println("TEST")
+            val intent = Intent(view.context, CourseDetailActivity::class.java)
+            view.context.startActivity(intent)
+        }
+    }
 }
