@@ -42,7 +42,7 @@
         app:layout_constraintStart_toStartOf="@+id/textView_video_title"
         app:layout_constraintTop_toBottomOf="@+id/textView_video_title" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView_channel_profile"
         android:layout_width="40dp"
         android:layout_height="40dp"
