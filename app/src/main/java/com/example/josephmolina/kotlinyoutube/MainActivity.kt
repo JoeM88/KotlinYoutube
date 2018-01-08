@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         client.newCall(request).enqueue(object : Callback {
             override fun onResponse(call: Call?, response: Response?) {
                 val body = response?.body()?.string()
-                println(body)
                 val gson = GsonBuilder().create()
                 val homeFeed = gson.fromJson(body, HomeFeed:: class.java)
                 runOnUiThread {
@@ -44,10 +43,3 @@ class MainActivity : AppCompatActivity() {
         })
     }
 }
-
-class HomeFeed(val videos: List<Video>)
-
-class Video(val id: Int, val name: String, val link:String, val imageUrl:String,
-            numberOfViews: Int, val channel: Channel)
-
-class Channel(val name: String, val profileImageUrl: String)
