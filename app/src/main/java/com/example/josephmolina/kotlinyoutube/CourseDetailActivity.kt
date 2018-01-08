@@ -1,5 +1,6 @@
 package com.example.josephmolina.kotlinyoutube
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -73,6 +74,11 @@ class CourseDetailActivity : AppCompatActivity() {
     }
 
     private class CourseLessonViewHolder(val customView: View) : RecyclerView.ViewHolder(customView) {
-
+        init {
+            customView.setOnClickListener{
+                val intent = Intent(customView.context, CourseLessonActivity::class.java)
+                customView.context.startActivity(intent)
+            }
+        }
     }
 }
