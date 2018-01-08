@@ -30,6 +30,10 @@ class MainAdapter(val homeFeed: HomeFeed) : RecyclerView.Adapter<CustomViewHolde
 
         val thumbnailImageView = holder?.view?.thumbnailImageView
         Picasso.with(holder?.view?.context).load(video.imageUrl).into(thumbnailImageView)
+
+        val channelProfileImageView = holder?.view?.imageView_channel_profile
+        Picasso.with(holder?.view?.context).load(video.channel.profileImageUrl).into(channelProfileImageView)
+
     }
 }
 
