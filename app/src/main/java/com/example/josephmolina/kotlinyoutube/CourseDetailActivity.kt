@@ -80,13 +80,21 @@ class CourseDetailActivity : AppCompatActivity() {
 
             val imageView = holder?.customView?.imageView_course_lesson_thumbnail
             Picasso.with(holder?.customView?.context).load(courseLesson.imageUrl).into(imageView)
+
+            holder?.courseLesson = courseLesson
         }
     }
 
-    private class CourseLessonViewHolder(val customView: View) : RecyclerView.ViewHolder(customView) {
+
+    class CourseLessonViewHolder(val customView: View, var courseLesson: CourseLesson? = null) : RecyclerView.ViewHolder(customView) {
+        companion object {
+            val COURSE_LESSON_LINK_KEY = "COURSE_LESSON_LINK_KEY"
+        }
+
         init {
             customView.setOnClickListener {
                 val intent = Intent(customView.context, CourseLessonActivity::class.java)
+                intent.putExtra(COURSE_LESSON_LINK_KEY, courseLesson?.link)
                 customView.context.startActivity(intent)
             }
         }
